@@ -1,5 +1,5 @@
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import duckdb
 import pandas as pd
@@ -33,7 +33,7 @@ def main():
     print(result.to_string(index=False))
 
     print("\nPipeline completed successfully!")
-    print("Timestamp:", datetime.now(timezone.utc).isoformat())
+    print("Timestamp:", datetime.now(UTC).isoformat())
 
     con.close()
 
