@@ -1,4 +1,3 @@
-
 import os
 
 import requests
@@ -15,9 +14,7 @@ def get_indonesia_locations():
     """Retrieve air quality monitoring locations in Indonesia."""
 
     if not API_KEY:
-        raise RuntimeError(
-            "OPENAQ_API_KEY is missing. Check your .env file."
-        )
+        raise RuntimeError("OPENAQ_API_KEY is missing. Check your .env file.")
 
     headers = {
         "X-API-Key": API_KEY,
@@ -40,7 +37,6 @@ def get_indonesia_locations():
     response.raise_for_status()
 
     return response.json()
-
 
 
 def main():
