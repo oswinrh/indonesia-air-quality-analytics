@@ -220,3 +220,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Generated data
+data/bronze/
+data/silver/
+data/gold/
+*.duckdb
+*.duckdb.wal

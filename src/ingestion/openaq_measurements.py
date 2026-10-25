@@ -1,6 +1,7 @@
 import os
 
 import requests
+from bronze_writer import save_raw_response
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -42,6 +43,15 @@ def main():
     print(f"Fetching PM2.5 measurements for sensor {sensor_id}...\n")
 
     data = get_hourly_measurements(sensor_id)
+
+    # Persist the raw API response to the Bronze layer
+    output_path = save_raw_response(
+        sensor_id=sensor_id,
+        response_data=data,
+    )
+
+    print(f"Bronze snapshot saved to: {output_path}")
+
     measurements = data.get("results", [])
 
     print(f"Retrieved {len(measurements)} measurements.\n")
