@@ -227,3 +227,6 @@ data/silver/
 data/gold/
 *.duckdb
 *.duckdb.wal
+
+# Local ingestion state
+data/state/

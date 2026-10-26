@@ -51,7 +51,7 @@ def test_ingest_multiple_pages(monkeypatch):
 
     saved_pages = []
 
-    def fake_fetch(sensor_id, page, limit):
+    def fake_fetch(sensor_id, page, limit, date_from=None, date_to=None):
         return pages[page - 1]
 
     def fake_save(sensor_id, response_data):
@@ -86,7 +86,7 @@ def test_ingest_empty_page(monkeypatch):
     monkeypatch.setattr(
         openaq_measurements,
         "get_hourly_measurements",
-        lambda sensor_id, page, limit: {"results": []},
+        lambda sensor_id, page, limit, date_from=None, date_to=None: {"results": []},
     )
 
     total = openaq_measurements.ingest_hourly_measurements(
